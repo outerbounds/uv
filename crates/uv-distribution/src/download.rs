@@ -37,6 +37,14 @@ impl LocalWheel {
         read_flat_wheel_metadata(&self.filename, &self.archive)
             .map_err(|err| Error::WheelMetadata(self.archive.to_path_buf(), Box::new(err)))
     }
+
+    pub fn filename(&self) -> &WheelFilename {
+        &self.filename
+    }
+
+    pub fn archive(&self) -> &Path {
+        &self.archive
+    }
 }
 
 impl Hashed for LocalWheel {
